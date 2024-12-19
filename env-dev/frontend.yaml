@@ -18,7 +18,7 @@ service:
 
 ingress:
   enabled: true
-  hostName: frontend-dev.rdevopsb81.online
+  hostName: frontend-dev.hptldevops.online
 
 
 

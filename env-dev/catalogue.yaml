@@ -1,6 +1,6 @@
 env:
   MONGO: true
-  MONGO_URL: "mongodb://mongodb-dev.rdevopsb81.online:27017/catalogue"
+  MONGO_URL: "mongodb://mongodb-dev.hptldevops.online:27017/catalogue"
 
 appName: catalogue
 service:
