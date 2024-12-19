@@ -1,15 +1,15 @@
-{{ if .Values.schema.enabled }}
-{{ range .Values.schema.containers }}
+{ { if .Values.schema.enabled } }
+  { { range .Values.schema.containers } }
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ $.Values.appName }}-{{ . }}-load
+  name: { { $.Values.appName } }-{{ . }}-load
 spec:
   template:
     spec:
       containers:
-        - name: {{ $.Values.appName }}-{{ . }}-load
+        - name: { { $.Values.appName } }-{{ . }}-load
           image: 897722697588.dkr.ecr.us-east-1.amazonaws.com/roboshop-schema-load:latest
           imagePullPolicy: Always
           env:
@@ -17,7 +17,7 @@ spec:
               value: db/{{ . }}.{{ $.Values.schema.dbExtention }}
           envFrom:
             - secretRef:
-                name: {{ $.Values.appName }}-job
+                name: { { $.Values.appName } }-job
       restartPolicy: Never
-{{ end }}
-{{ end }}
+  { { end } }
+  { { end } }

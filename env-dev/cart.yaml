@@ -1,10 +1,13 @@
 env:
+  MONGO: true
+  MONGO_URL: "mongodb://mongodb-dev.rdevopsb81.online:27017/catalogue"
+
+env:
   CATALOGUE_HOST: catalogue
   CATALOGUE_PORT: "8080"
   REDIS_HOST: redis-dev.hptldevops.online
 
 appName: cart
-
 service:
   containerPort: 8080
   type: ClusterIP
