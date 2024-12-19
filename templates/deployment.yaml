@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+  labels:
+{{- include "common.labels" . | indent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "common.labels" . | indent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "common.labels" . | indent 8 }}
+    spec:
+      containers:
+        - name: {{ .Values.appName }}
+          image: 897722697588.dkr.ecr.us-east-1.amazonaws.com/roboshop-{{ .Values.appName }}:{{ .Values.COMMIT_ID }}
+          ports:
+            - containerPort: {{ .Values.service.containerPort }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.appName }}
